@@ -39,9 +39,9 @@ for fn in files:
                 ilat=site['Lat'][cnt]
                 ilon=site['Lon'][cnt]
                      #print ilat,ilon
-                site_name=site['sitename'][cnt]
+                # site_name=site['sitename'][cnt]
                      #print site_name
-                pft=site['IGBP'][cnt]
+                # pft=site['IGBP'][cnt]
                      #cnt+=1
                      # print pft
                 lat_ind,lon_ind=read_lat_lon(ilat,ilon,0.5,0.5)
