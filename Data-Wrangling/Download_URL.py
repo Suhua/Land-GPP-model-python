@@ -29,6 +29,9 @@ for i in range(100): # Input the number of files to retrieve
         # path_name= os.path.join(URL,file_date_name(st.year,st.month,st.day))
         st=st+datetime.timedelta(days=8) # Add 8-days increase to st
     response=urllib.urlopen(path_name)
+    
+    
+    
     for line in response:
         temElement=line.split('\"')
         for name in temElement:
