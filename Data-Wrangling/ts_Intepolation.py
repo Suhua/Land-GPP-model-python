@@ -48,3 +48,7 @@ df[df==255]=np.nan
 # print df[site_name[45]]
 print type(df)
 df.interpolate(method='spline',order=2)
+
+#plot data
+df[site_name[45]].plot()
+plt.show()
