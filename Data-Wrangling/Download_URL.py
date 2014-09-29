@@ -20,7 +20,7 @@ def file_date_name(year,month,day):
 URL = 'http://e4ftl01.cr.usgs.gov/MOLT/MOD15A2.005/'
 
 st=datetime.date(2003,1,01)  
-for i in range(100): # Define the number of files for data
+for i in range(100): # Input the number of files to retrieve
     path_name= os.path.join(URL,file_date_name(st.year,st.month,st.day))
     print "the {0} th file".format(i)
     if (st.month==12 and st.day>23): # Change into next year
