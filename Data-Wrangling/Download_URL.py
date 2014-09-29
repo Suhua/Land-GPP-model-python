@@ -35,7 +35,8 @@ for i in range(100): # Input the number of files to retrieve
     for line in response:
         temElement=line.split('\"')
         for name in temElement:
-            if name[:20]>='MOD15A2.A2003001.h26' and name.endswith('hdf'):
+            #In case the download process stops in middle
+            # if name[:20]>='MOD15A2.A2003001.h26' and name.endswith('hdf'):
                 file_path=os.path.join(path_name,name)
                 # urllib.urlretrieve(file_path,name)
                 print file_path
