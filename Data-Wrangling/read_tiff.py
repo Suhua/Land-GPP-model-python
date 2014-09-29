@@ -61,5 +61,5 @@ for i in range(0,len(files)):
 #     print site_name[i]
 #     print output[:,i]
 
-np.save('LAI'+'.npy','output')
+np.save('LAI.npy',output)
 
