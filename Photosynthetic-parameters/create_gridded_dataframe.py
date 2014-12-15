@@ -22,7 +22,7 @@ lons=datain['Lon']
 land_DF=pd.DataFrame({'kg':kg,'lats':lats,'lons':lons})
 
 
-'''with filling the ocean area with NAN data, we create a gridded dataset covering the whole globe. This is accomplised by three 
+'''with filling the ocean area with NAN data, we create a grided dataset covering the whole globe. This is accomplised by three 
 steps. First, create a list of lat and lon covering the whole globe; Second, create a complete DataFrame out of it. Third, merge the 
 existing land kg dataFrame with the complete DataFrame, the ocearn spots will be filled with 'nan' aumomatically'''
 glat=np.linspace(-89.75,89.75,num=360)
