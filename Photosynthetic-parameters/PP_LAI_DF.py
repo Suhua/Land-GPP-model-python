@@ -49,8 +49,7 @@ num_site=len(site['siteID'])
 siteID=site['siteID']
 
 
-# initilize the input
-
+'''initilize the input'''
 output=np.zeros((num_files,num_site),dtype=float)
 
 for i in range(0,len(files)):    
