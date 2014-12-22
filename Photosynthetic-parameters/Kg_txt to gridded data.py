@@ -9,9 +9,9 @@ import matplotlib.pyplot as plt
 file_path=r'G:\Research\Gridded Data\Koppen Climate\1976-2000_ASCII.txt'
 
 '''open txt file, land koppen climate data are stored as list with its latitude and longitude information; latitudates 
-and longitudes are gridded by 0.5 times 0.5 degree of spatial resolution'''
+and longitudes are gridded by 0.5 times 0.5 degree of spatial resolution, but ocean information are missing. '''
 
-# read txt table, three columns are: latitude, longitude, and Koppen Climate (kg) type
+
 datain=pd.read_table(file_path,sep='\s+',header=False)
 
 # print datain.index,'\n', datain.columns
