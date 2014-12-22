@@ -50,13 +50,13 @@ for fn in evi_files:
             EVI_output[t_cnt,cnt]=data[lat_ind,lon_ind]
         t_cnt+=1
 month=list(range(0,24))
-month[0]=datetime.date(2004,1,1).isoformat()
+
 
 i=0
 while i<24:
       if i<12:
-         i+=1
          month[i]=datetime.date(2004,i,1).isoformat()
+         i+=1
       else:
          i+=1
          month[i-1]=datetime.date(2005,i-12,1).isoformat()
