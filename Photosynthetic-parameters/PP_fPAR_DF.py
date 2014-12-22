@@ -44,14 +44,13 @@ for fn in files:
                 fpar_output[t_cnt,cnt]=data[lat_ind,lon_ind]
         t_cnt+=1
 
-# Create DataFrame
+''' Create DataFrame, index is the monthly time series from 2004-1-1 to 2005-12-1, columns are the site names'''
 month=list(range(0,24))
-month[0]=datetime.date(2004,1,1).isoformat()
 i=0
 while i<24:
       if i<12:
-         i+=1
          month[i]=datetime.date(2004,i,1).isoformat()
+          i+=1
       else:
          i+=1
          month[i-1]=datetime.date(2005,i-12,1).isoformat()
