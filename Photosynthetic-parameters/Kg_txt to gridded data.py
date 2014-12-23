@@ -79,6 +79,53 @@ plt.colorbar()
 plt.show()
 
 #save data to csv
-data=pd.DataFrame(data)
-os.chdir(r'G:\Research\modelling\model_development\datasets_for_PP_prediction')
-data.to_csv('kg_numeric.csv')
+# data=pd.DataFrame(data)
+# os.chdir(r'G:\Research\modelling\model_development\datasets_for_PP_prediction')
+# data.to_csv('kg_numeric.csv')
+
+
+def read_lat_lon(lat,lon,lat_r,lon_r):
+ '''read the lat and lon at specific lat and lon resolution(lat_r and lon_r), return the index of lat and lon at
+gridded data set, by default, lat ranges from -90 to 90 northward and lon ranges -180 to 180 eastward '''
+ if (lat>=-90 and lat<=90):
+     lat=90-lat
+ if (lon>=-180 and lon<=180):
+     lon=lon+180
+ lat_ind=int(lat//lat_r)
+ lon_ind=int(lon//lon_r)
+ return lat_ind, lon_ind
+
+
+'''Read the fluxnet towers latitudes and longitudes, '''
+site=pd.read_csv(r'G:\Research\fluxdata\Flux Data\flux_PP\KoppenClimateAnalysis\PP_JJA.csv')
+num_site=len(site['siteID'])
+siteID=site['siteID']
+Var_output=np.zeros(num_site,float)
+'''initialize the output array'''
+
+for cnt in range(0,num_site): # loop through all the sites
+    lat=site['lat'][cnt]
+    lon=site['lon'][cnt]
+    ilat,ilon=read_lat_lon(lat,lon,0.5,0.5)
+    Var_output[cnt]=kg[ilat,ilon]
+Var_output=[Var_output]*24
+# '''Plot the output data'''
+# plt.imshow(Var_output)
+# plt.colorbar()
+# plt.show()
+
+
+''' Save is to Pandas Data Frame, index is the time series, and columns are site name'''
+month=list(range(0,24))
+i=0
+while i<24:
+      if i<12:
+         month[i]=datetime.date(2004,i+1,1).isoformat()
+         i+=1
+      else:
+         i+=1
+         month[i-1]=datetime.date(2005,i-12,1).isoformat()
+kg_DF=pd.DataFrame(Var_output,index=month,columns=siteID)
+out_path=r'G:\Research\modelling\model_development\predicting_pp'
+out_file=os.path.join(out_path,'kg_DF.csv')
+kg_DF.to_csv(out_file)
