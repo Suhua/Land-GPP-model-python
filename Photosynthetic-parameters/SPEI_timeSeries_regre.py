@@ -9,16 +9,6 @@ from datetime import datetime
 import glob
 import os
 from scipy.stats import pearsonr
-def read_lat_lon(lat,lon,lat_r,lon_r):
-    '''read the lat and lon at specific lat and lon resolution(lat_r and lon_r), return the index of lat and lon at
-gridded data set, by default, lat ranges from -90 to 90 northward and lon ranges -180 to 180 eastward '''
-    if (lat>=-90 and lat<=90):
-        lat=90-lat
-    if (lon>=-180 and lon<=180):
-         lon=lon+180
-    lat_ind=int(lat//lat_r)
-    lon_ind=int(lon//lon_r)
-    return lat_ind, lon_ind
 
 os.chdir(r'G:\Research\Gridded Data\SPI\SPEI')
 ''' load the Standard Precipitation Evapotransporation Index (SPEI) netCDF data. SPEI is scaled
