@@ -54,7 +54,6 @@ for month in range(1,13):
     fpar=GPP.fPAR(month)
     PAR=GPP.PAR(month)
     alpha=GPP.Alpha(month)
-    # print alpha
     output=alpha*fpar*PAR
     fig = plt.figure()
     ax = fig.add_axes([0.05,0.05,0.9,0.9])
