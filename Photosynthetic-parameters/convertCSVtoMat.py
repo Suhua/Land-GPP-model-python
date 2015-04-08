@@ -54,7 +54,3 @@ for fn in files:
         pre_name=name
     i+=1
 
-#
-#
-# f=pd.read_csv(files[0],header=0,index_col=1)
-# f1=pd.read_csv(files[0],header=0,index_col=1)
