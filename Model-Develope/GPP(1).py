@@ -88,7 +88,7 @@ for month in range(1,13):
     # m.drawmapbourndary(fill_color='0.3')
 
     im1= m.pcolormesh(lons,lats,map,shading='flat',cmap=plt.cm.jet,latlon=True)
-    m.drawparallels(np.arange(-90.,99.,30.))
+    m.drawparallels(np.arange(-90.,90.,30.))
     m.drawmeridians(np.arange(-180.,180.,60.))
     mstr=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
     ax.set_title(''.join([mstr[month-1],' Mean GPP ']),fontsize=16)
