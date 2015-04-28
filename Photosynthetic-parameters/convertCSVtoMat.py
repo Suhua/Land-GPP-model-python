@@ -35,7 +35,6 @@ def save_df_mat(name,df):
 
 i=0
 for fn in files:
-    print i
     name=fn.split('.')[0]
     if i==0 and name in setList:
        setList.pop(setList.index(name))
