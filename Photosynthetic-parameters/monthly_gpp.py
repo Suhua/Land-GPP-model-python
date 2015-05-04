@@ -18,8 +18,8 @@ def monthlyMean(df):
     output=np.zeros(12,dtype=float)
     i=0
     for month in range (0,12):
-        monSta = month * 30
-        monEnd = (month+1)*30
+        monSta = month * 30*48
+        monEnd = (month+1)*30*48
         gpp = df.ix[monSta:monEnd,:]
         output [i] = np.mean(gpp['GPP_f'].as_matrix())
         i+=1
