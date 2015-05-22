@@ -193,7 +193,7 @@ for r in range(360):
        raPre=[]
        kpPre=[]
        pftPre=[]
-       for year in range(2000, 2003):
+       for year in range(2003, 2006):
             for month in range(1, 13):
                 filenum = (year - 2000) * 12 + month - 1
                 G = GridData(filenum)
