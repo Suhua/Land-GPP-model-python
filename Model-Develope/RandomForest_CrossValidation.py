@@ -5,16 +5,10 @@ import scipy.misc as sm
 from scipy.ndimage import zoom
 from scipy.io import netcdf
 from scipy import io
-from sklearn import tree
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.externals.six import StringIO
 import os
-import pydot
 import glob
-from pyhdf import SD
-import matplotlib.pyplot as plt
-from sklearn.tree import DecisionTreeClassifier,DecisionTreeRegressor
-from mpl_toolkits import basemap
+
 
 ###---Input-------------------------------------------------------------------------------------------------------------
 class GridData():
@@ -192,9 +186,7 @@ for month in range(1,13):
     # deal with missing values by the process defined early
     features[:,1]=fillMissValue(features[:,1])
     features[:,6]=fillMissValue(features[:,6])
-    # print features[:,1]
-    # for i in range(0,6):
-        # print features[:,i]
+  
     print cnt
     expVar=features[0:cnt,:].copy()
     scores=list()
@@ -210,45 +202,8 @@ for month in range(1,13):
             y_train=np.concatenate(y_train)
             scores.append(RandomForestRegressor().fit(x_train,y_train).score(x_test,y_test))
         print(scores)                
-        #clf=DecisionTreeClassifier()
-        #clf=clf.fit(expVar,target)
+       
     else:
         print 'GPP length is '+str(len(target))+',while expVar length is '+str(np.size(features,0))
 
-    # os.unlink('iris.dot')
-    # dot_data=StringIO()
-    # tree.export_graphviz(clf,out_file=dot_data)
-    # graph=pydot.graph_from_dot_data(dot_data.getvalue())
-    # graph.write_pdf('decisionTree_example_month{0}.pdf'.format(month))
-
-
-##---Output----
-# # ------Prediction process----------------------------------------------------------------------------------------------
-#     output=np.zeros([360,720],dtype=float)
-#     output=np.ma.masked_where(pft==0,output)
-#     for r in range(0,360):
-#         for c in range (0,720):
-#
-#             if pft[r,c]==16 or output[r,c] is np.ma.masked or pre[r,c] is np.ma.masked or evi[r,c] is np.ma.masked or fpar[r,c] is np.ma.masked:
-#                 pass
-#             else:
-#                 features=np.zeros([1,7],dtype=float)
-#                 features[0,0] = pre[r, c]
-#                 features[0,1] = evi[r,c]
-#                 features[0,2] = ra[r, c]
-#                 features[0,3] = kp[r, c]
-#                 features[0,4] = pft[r, c]
-#                 features[0,5] = ta[r, c]
-#                 features[0,6]=fpar[r,c]
-#                 output[r,c]=clf.predict(features)
-
-        # output=np.ma.masked_where(output>9,output)
-        # output = np.ma.masked_where(output <0, output)
-        #calcalate total GPP
-
-    # area_weight = io.loadmat(r'G:\Research\Gridded Data\NC\area_360x720.mat')
-    # area = area_weight['area_global']
-    # output = output * area / 1000000000000000*30
-    # MonthlyGPP=np.sum(np.sum(output))
-    # print MonthlyGPP
-    # output.dump('decisionTree_alpha_Mo{0}.npy'.format(month))
+   
