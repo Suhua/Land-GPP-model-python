@@ -125,7 +125,6 @@ def fillMissValue(vector):
      temp=temp.fillna(temp.mean())
      return temp.as_matrix()[:,0]
 
-###-------------------------------Main function starts here-------------------------------------------------------------
 ##------------Training process------------------------------------------------------------------------------------------
 
 df = pd.read_csv(r"G:\Research\modelling\machine learning\complete_info_alpha.csv", header=0, index_col=1)
@@ -189,6 +188,8 @@ for month in range(1,13):
   
     print cnt
     expVar=features[0:cnt,:].copy()
+    
+    ## Cross Validation --------------------------------------------------------------------------------------------
     scores=list()
     if len(target)==np.size(expVar,0):
         x_folds=np.array_split(expVar,5)
