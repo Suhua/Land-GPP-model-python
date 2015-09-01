@@ -54,6 +54,8 @@ for year in range(0,6):
         PAR=GPP.PAR(month,year)
         alpha=GPP.Alpha(month)
         output=alpha*fpar*PAR
+        
+        # '''plot map'''
         fig = plt.figure()
         ax = fig.add_axes([0.05,0.05,0.9,0.9])
         map=np.ma.fix_invalid(output,copy=True,fill_value=0)
@@ -71,6 +73,7 @@ for year in range(0,6):
         #plt.savefig(''.join(['Global Gross Primary Production in ' , mstr[month-1],'.jpg']))
         # plt.show()
         
+        # Calculate global area weighted GPP
         area_weight=io.loadmat(r'G:\Research\Gridded Data\NC\area_360x720.mat')
         area=area_weight['area_global']
         output=output*area/1000000000000000
