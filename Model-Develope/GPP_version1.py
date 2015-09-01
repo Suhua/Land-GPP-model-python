@@ -68,7 +68,7 @@ for year in range(0,6):
         mstr=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
         ax.set_title(''.join(['Global Gross Primary Production in ' , mstr[month-1]]))
         cb = m.colorbar(im1,"bottom", size="5%", pad="2%")
-        plt.savefig(''.join(['Global Gross Primary Production in ' , mstr[month-1],'.jpg']))
+        #plt.savefig(''.join(['Global Gross Primary Production in ' , mstr[month-1],'.jpg']))
         # plt.show()
         
         area_weight=io.loadmat(r'G:\Research\Gridded Data\NC\area_360x720.mat')
