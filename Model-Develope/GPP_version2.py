@@ -94,7 +94,7 @@ for month in range(1,13):
     ax.set_title(''.join([mstr[month-1],' Mean GPP ']),fontsize=16)
     cb = m.colorbar(im1,"bottom", size="5%", pad="2%",ax=[])
     # m.pcolor(im1, vmin=0, vmax=18)
-    plt.savefig(''.join(['Mean Global Gross Primary Production in ' , mstr[month-1],'.jpg']))
+   # plt.savefig(''.join(['Mean Global Gross Primary Production in ' , mstr[month-1],'.jpg']))
     output=output*area/1000000000000000
     total_GPP=total_GPP+np.sum(np.sum(output))*30
         # plt.imshow(output)
