@@ -55,21 +55,21 @@ for year in range(0,6):
         alpha=GPP.Alpha(month)
         output=alpha*fpar*PAR
         
-        # '''plot map'''
-        fig = plt.figure()
-        ax = fig.add_axes([0.05,0.05,0.9,0.9])
-        map=np.ma.fix_invalid(output,copy=True,fill_value=0)
+        ## '''plot map'''
+        # fig = plt.figure()
+        # ax = fig.add_axes([0.05,0.05,0.9,0.9])
+        # map=np.ma.fix_invalid(output,copy=True,fill_value=0)
       
-        lats=np.linspace(90,-90,360)
-        lons=np.linspace(-180,180,720)
-        lons, lats = np.meshgrid(lons,lats)
-        m =basemap.Basemap(projection='robin',lon_0=0.0,resolution=None)
-        im1= m.pcolormesh(lons,lats,map,shading='flat',cmap=plt.cm.jet,latlon=True)
-        m.drawparallels(np.arange(-90.,99.,30.))
-        m.drawmeridians(np.arange(-180.,180.,60.))
-        mstr=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
-        ax.set_title(''.join(['Global Gross Primary Production in ' , mstr[month-1]]))
-        cb = m.colorbar(im1,"bottom", size="5%", pad="2%")
+        # lats=np.linspace(90,-90,360)
+        # lons=np.linspace(-180,180,720)
+        # lons, lats = np.meshgrid(lons,lats)
+        # m =basemap.Basemap(projection='robin',lon_0=0.0,resolution=None)
+        # im1= m.pcolormesh(lons,lats,map,shading='flat',cmap=plt.cm.jet,latlon=True)
+        # m.drawparallels(np.arange(-90.,99.,30.))
+        # m.drawmeridians(np.arange(-180.,180.,60.))
+        # mstr=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+        # ax.set_title(''.join(['Global Gross Primary Production in ' , mstr[month-1]]))
+        # cb = m.colorbar(im1,"bottom", size="5%", pad="2%")
         #plt.savefig(''.join(['Global Gross Primary Production in ' , mstr[month-1],'.jpg']))
         # plt.show()
         
