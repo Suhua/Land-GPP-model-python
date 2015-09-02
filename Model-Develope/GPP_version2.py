@@ -9,7 +9,7 @@ import glob
 from pyhdf import SD,HDF
 from mpl_toolkits import basemap
 
-class GPP:
+class GPP():
     '''GPP (Gross Primary Production) is calculated as GPP=alpha*fPAR*PAR; alpha is the specific light use efficiency at monthly step;PAR is partial
      active radiation ; fPAR is the fraction of partial active radiation '''
     def EVI(self,month,year):
