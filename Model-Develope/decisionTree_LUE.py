@@ -190,8 +190,10 @@ for year in range(2000,2006):
         output=np.ma.masked_where(pft==0,output)
         for r in range(0,360):
             for c in range (0,720):
-                if output[r,c]==0:
-                    features=np.zeros([1,7],dtype=float)
+                if output[r,c] is np.ma.masked:
+                    pass
+                else:
+                    
                     if pre[r,c] is np.ma.masked:
                         features[0,0]=0
                     else:
