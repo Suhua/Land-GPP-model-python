@@ -18,6 +18,7 @@ def read_lat_lon(lat,lon,lat_r,lon_r):
 # load the netCDF data
 f=Dataset('SPEI_03.nc','r')
 # print f
+# print dir(f)
 #Get the time  index
 timevar = f.variables['time']
 # Select the start time and end time,years go from 1911 to 2011, months range from 1 to 12, keep the day unchanged
