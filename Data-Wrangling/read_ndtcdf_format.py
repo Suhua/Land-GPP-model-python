@@ -4,6 +4,9 @@ import numpy.ma as ma
 from mpl_toolkits import basemap
 import matplotlib.pylab as plt
 from datetime import datetime
+
+
+
 # load the netCDF data
 f=Dataset('SPEI_48.nc','r')
 #Get the time index
