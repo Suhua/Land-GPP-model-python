@@ -1,3 +1,8 @@
+'''
+This purpose of this code is to calculate gross primary production (GPP) by tower-LUE-GPP model from 2000-2005. GPP is calculated as GPP=alpha*fPAR*PAR; alpha is the specific light use efficiency at monthly step;PAR is partial
+     active radiation ; fPAR is the fraction of partial active radiation 
+'''
+
 import numpy as np
 from scipy.io import netcdf
 import scipy.misc as sm
@@ -5,13 +10,10 @@ from scipy.ndimage import zoom
 from scipy import io
 import matplotlib.pylab as plt
 import glob
-
 from pyhdf import SD,HDF
 from mpl_toolkits import basemap
 
 class GPP:
-    '''GPP (Gross Primary Production) is calculated as GPP=alpha*fPAR*PAR; alpha is the specific light use efficiency at monthly step;PAR is partial
-     active radiation ; fPAR is the fraction of partial active radiation '''
     def fPAR(self,month,year):
         '''fPar is an unitless value ranging from 0 to 1, with monthly step and 0.5 x 0.5 spatial resolution'''
         hdf_files=glob.glob(r'G:\Research\Gridded Data\Vegetation Index\LAI and FPAR\fPAR200{0}\*HDF'.format(year))
@@ -20,7 +22,6 @@ class GPP:
             if fn.endswith('HDF'):
                 cnt+=1
                 if cnt==int(month)+1:
-                    # print cnt
                     data=SD.SD(fn).select('fapar').get()
                     data=np.ma.masked_where(data==255,data)/255.0
                     return data
@@ -40,8 +41,10 @@ class GPP:
         return sr
 
     def Alpha(self,month):
+        '''
+        the Alpha data is aggregated from tower level to biome level calcuated as an average
+        '''
         files=glob.glob(r'G:\Research\modelling\model_development1\*npy')
-
         for f in files:
             if f.endswith('alpha_{0}.npy'.format(month+1)):
                 alpha=np.load(f)
@@ -58,10 +61,9 @@ class GPP:
 #--------------------------Main funtion starts here---------------------------------------------------------------------
 GPP=GPP()
 total_GPP=0
-gpp_lue=np.ones([360,720,72],dtype=float)
-area_weight = io.loadmat(r'G:\Research\Gridded Data\NC\area_360x720.mat')
+gpp_lue=np.ones([360,720,72],dtype=float)  # pre define an array to store results 
+area_weight = io.loadmat(r'G:\Research\Gridded Data\NC\area_360x720.mat')  
 area = area_weight['area_global']
-
 for year in range(0,6):
     total_GPP=0
     for month in range(0,12):
@@ -72,16 +74,17 @@ for year in range(0,6):
         # print PAR
         alpha=GPP.Alpha(month)
         # print alpha
-        output=alpha*fpar*PAR*30
+        output=alpha*fpar*PAR*30   # convert daily value to monthly value
         ind=year*12+month
-
-        output.dump('cluegpp{0}.npy'.format(ind))
-        # total_GPP=total_GPP+np.sum(np.sum(gpp_lue[:,:,ind].squeeze()))
-#     print total_GPP
-# np.save('monthlyGpp1.npy',gpp_lue)
-    # ten_year_std=np.std(ten_year_mean,axis=2)
-
-
+        yr = year+2000;
+        if len(str(month)<2):
+            mo = ''.join([str(0),str(month)])
+        else:
+            mo = str(month)
+        name=''.join([str(yr),mo])
+        output.dump('towerLUEgpp{0}.npy'.format(name))
+        
+        
 
     # fig=plt.figure()
     # ax = fig.add_axes([0.05,0.05,0.9,0.9])
