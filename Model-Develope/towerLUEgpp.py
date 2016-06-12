@@ -1,6 +1,7 @@
 '''
-This purpose of this code is to calculate gross primary production (GPP) by tower-LUE-GPP model from 2000-2005. GPP is calculated as GPP=alpha*fPAR*PAR; alpha is the specific light use efficiency at monthly step;PAR is partial
-     active radiation ; fPAR is the fraction of partial active radiation 
+This purpose of this code is to calculate gross primary production (GPP) by tower-LUE-GPP model from 2000-2005. 
+GPP is calculated as GPP=alpha*fPAR*PAR; alpha is the specific light use efficiency at monthly step;PAR is partial
+active radiation ; fPAR is the fraction of partial active radiation 
 '''
 
 import numpy as np
